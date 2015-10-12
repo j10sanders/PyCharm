@@ -5,7 +5,7 @@ class Bicycle(object):
         self.modelname = modelname
         self.weight = weight
         self.cost = cost
-        return cost
+
 
 class BikeShop(object):
     def __init__(self, name, inventory=[]):
@@ -25,28 +25,25 @@ class Customers(object):
         self.name = name
         self.money = money
 
+    def who_buys(self, budget=[], selling_for=[]):
+        self.budget = budget
+        self.selling_for = selling_for
+        sold = []
+        for money in self.budget:
+            if money > money in self.selling_for:
+                sold.append(money)
+            else:
+                sold.append("not sold")
+        return sold
+
 def main():
-    bikegroup = Bicycle(["lilbike", "medbike" "bigbike"], [15, 20, 30], [100.0, 300.0, 900])
-    print(bikegroup)
-    print(bikegroup.weight)
-    #print(bikegroup.price())
-    gearedup = BikeShop("Geared Up", bikegroup.modelname)
-    crowd = Customers(["Tom", "Jill"], [200, 500, 1000])
-
-
-
-    #fullinventory = {}
-    #for bikes in bikegroup.modelname:
-        #fullinventory.append(bikes:[bikegroup.weight, bikegroup.price])
-        #return fullinventory
-
-
-    #medbike = Bicycle("medbike", 30, 150)
-    #bigbike = Bicycle("bigbike", 60, 250)
-    #oarngebike = Bicycle("orangebike", 35, 550)
-    #yellobike = Bicycle("yellowbike", 36, 700)
-    #redbike = Bicycle("redbike", 37, 1100)
-    #print(redbike.sale_price())
+    bikegroup = Bicycle(["lilbike", "medbike", "bigbike", "orangebike", "yellowbike", "redbike"],
+                        [15, 20, 30, 23, 24, 25], [100.0, 600.0, 900.0, 650, 700, 750])
+    print(bikegroup.cost)
+    gearedup = BikeShop("Geared Up", [6, 6, 6])
+    print(gearedup.price(bikegroup.cost))
+    crowd = Customers(["Jill", "Jon", "Giant"], [200, 500, 1000])
+    print(crowd.who_buys(crowd.money, gearedup.price(bikegroup.cost)))
 
 if __name__ == '__main__':
     main()
